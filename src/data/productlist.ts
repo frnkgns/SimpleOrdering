@@ -1,0 +1,1 @@
+export const Products = ['Coffee', 'Soda', 'Bread']
