@@ -1,11 +1,10 @@
-<div class="relative flex flex-col w-screen h-screen justify-center items-center overflow-hidden">
-    @if (sharedservice.showTakeOrderModal) {
-        <div class="absolute bg-slate-900 h-screen w-screen opacity-80"></div>
-        <app-takeorder></app-takeorder>
-    }
+<br>
+<br>
+<br>
+@if (sharedservice.showTakeOrderModal) {
+    <div class="absolute bg-slate-900 h-screen w-screen opacity-80"></div>
+    <app-takeorder></app-takeorder>
+}
 
-    <app-products></app-products>
-    <table-app></table-app>
-</div>
-
-
+<app-products></app-products>
+<table-app></table-app>

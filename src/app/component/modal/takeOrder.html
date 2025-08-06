@@ -1,23 +1,25 @@
 <div class="absolute flex flex-col px-8 py-4 bg-white rounded-xl z-999">
-    <label for="name">Name</label>
-    <input type="text" name="name" class="p-2 mb-4 border-b outline-0 w-full">
-    <label for="product">Product</label>
-    <input type="text" name="product"  class="p-2 mb-4 border-b outline-0">
-    <label for="amount">Amount</label>
-    <input type="number" name="amount"  class="p-2 mb-4 border-b outline-0">
-    <label for="paymet">Payment Method</label>
-    <input type="text" name="paymet" class="p-2 mb-4 border-b outline-0">
+    [formGroup]="form"
+    
+    <form [formGroup]="orderForm" (ngSubmit)="getData()">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name"  class="p-2 mb-4 border-b outline-0">
+        <label for="amount">Amount</label>
+        <input type="number" formControlName="amount"  class="p-2 mb-4 border-b outline-0">
+        <label for="paymet">Payment Method</label>
+        <input type="text" formControlName="paymet" class="p-2 mb-4 border-b outline-0">
 
-    <div class="flex justify-between">
-        <button 
-            class="py-2 px-4 bg-slate-900 hover:bg-green-700 rounded-lg text-white mt-10"
-            type="button">Proceed
-        </button>
+        <div class="flex justify-between">
+            <button 
+                class="py-2 px-4 bg-slate-900 hover:bg-green-700 rounded-lg text-white mt-10"
+                type="submit">Proceed
+            </button>
 
-        <button 
-            class="py-2 px-4 bg-slate-900 hover:bg-red-700 rounded-lg text-white mt-10"
-            (click)="handleCloseTakeOrderModal()"
-            type="button">Cancel
-        </button>
-    </div>
+            <button 
+                class="py-2 px-4 bg-slate-900 hover:bg-red-700 rounded-lg text-white mt-10"
+                (click)="handleCloseTakeOrderModal()"
+                type="button">Cancel
+            </button>
+        </div>
+    </form>
 </div>

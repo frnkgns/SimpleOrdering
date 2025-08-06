@@ -3,7 +3,7 @@
     @for (product of products; track $index) {
         <button 
             class="bg-slate-900 px-6 py-8 rounded" 
-            (click)="handleOpenTakeOrderModal()"
+            (click)="openOrderForm(product)"
             type="button">
             {{product}}
         </button>

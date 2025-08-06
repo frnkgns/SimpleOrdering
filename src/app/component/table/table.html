@@ -6,28 +6,28 @@
                 <tr class="bg-slate-900 text-white rounded-tl">
                     <th scope="col" class="px-4 py-2">ID</th>
                     <th scope="col"  class="px-4 py-2">
-                        <select name="selectproduct" id="prdct"  class="bg-slate-900 text-white px-4 py-2">
+                        <select (change)="selectedProductFunct($event)" name="selectproduct" id="prdct"  class="bg-slate-900 text-white px-4 py-2">
                             <option selected>Product</option>
-                            <option value="1">Coffee</option>
-                            <option value="2">Soda</option>
-                            <option value="3">Bread</option>
+                            @for (product of productListOption; track $index) {
+                                <option [value]="product" >{{product}}</option>
+                            }
                         </select>
                     </th>
                     <th scope="col"  class="px-4 py-2">Name</th>
                     <th scope="col"  class="px-4 py-2">Amount</th>
                     <th scope="col"  class="px-4 py-2">
-                        <select name="paymethod" id="pymtd" class="bg-slate-900 text-white px-4 py-2">
+                        <select (change)="selectedPaymentMethod($event)" name="paymethod" id="pymtd" class="bg-slate-900 text-white px-4 py-2">
                             <option selected>Payment Method</option>
-                            <option value="1">Cash</option>
-                            <option value="2">Gcash</option>
-                            <option value="3">Bank Transfer</option>
+                            @for (item1 of payMethodOption; track $index) {
+                                <option [value]="item1">{{item1}}</option>
+                            }
                         </select>
                     </th>
                     <th scope="col" class="px-4 py-2">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @for (item of orderList; track item.id) {
+                @for (item of filteredList; track item.id) {
                     <tr>
                         <td class="py-2 text-center font-semibold">{{ item.id }}</td>
                         <td>{{ item.product }}</td>

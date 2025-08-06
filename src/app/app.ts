@@ -5,7 +5,6 @@ import { ProductList } from './component/productList/product';
 import { SharedService } from './component/sharedService';
 import { TakeOrder } from './component/modal/takeOrder';
 
-
 @Component({
   selector: 'app-root',
   imports: [Table, ButtonModule, ProductList, TakeOrder],

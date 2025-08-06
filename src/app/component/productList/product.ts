@@ -1,6 +1,5 @@
 import { Component, Output } from '@angular/core';
 import { Products } from '../../../data/productlist';
-import { TakeOrder } from "../modal/takeOrder";
 import { SharedService } from '../sharedService';
 
 
@@ -8,15 +7,14 @@ import { SharedService } from '../sharedService';
   selector: 'app-products',
   templateUrl: './product.html',
   styleUrl: '../../app.css',
-  imports: [TakeOrder]
 })
 export class ProductList {
     products = Products
-    constructor(public sharedservice: SharedService) {}
 
-  handleOpenTakeOrderModal() {
-    this.sharedservice.setShowTakeOrderModal(true);
+  constructor(public sharedservice: SharedService) {}
+
+  openOrderForm(product: string) {
+    console.log("Fetch Item to Modal: ", product);
+    this.sharedservice.setShowModalWithProduct(true, product);
   }
-
-
 }
