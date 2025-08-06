@@ -19,6 +19,12 @@ export class SharedService {
     this.setShowTakeOrderModal(false);
   }
 
+  deleteOrder(id: number){
+    Orders.splice(id, 1);
+
+    console.log("Orders After Delete: ", Orders);
+  }
+
   setShowModalWithProduct(value: boolean, product: string) {
     this.showTakeOrderModal = value;
     this.selectedProduct = product;
@@ -33,8 +39,6 @@ export class SharedService {
   getShowTakeOrderModal() {
     return this.showTakeOrderModal;
   }
-
-
 }   
 
 //so since nag hahanap nga tayo ng way to create a global variable where in we can
