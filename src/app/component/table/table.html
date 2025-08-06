@@ -1,25 +1,45 @@
 <div class="flex w-full justify-center">
     <div class="flex flex-col">
         <p class="font-bold text-2xl mb-4">Orders</p>
-        <table>
+        <table class="border">
             <thead>
                 <tr class="bg-slate-900 text-white rounded-tl">
-                    <th class="px-4 py-2">ID</th>
-                    <th class="px-4 py-2">Product</th>
-                    <th class="px-4 py-2">Name</th>
-                    <th class="px-4 py-2">Amount</th>
-                    <th class="px-4 py-2">Method</th>
-                    <th class="px-4 py-2">Action</th>
+                    <th scope="col" class="px-4 py-2">ID</th>
+                    <th scope="col"  class="px-4 py-2">
+                        <select name="selectproduct" id="prdct"  class="bg-slate-900 text-white px-4 py-2">
+                            <option selected>Product</option>
+                            <option value="1">Coffee</option>
+                            <option value="2">Soda</option>
+                            <option value="3">Bread</option>
+                        </select>
+                    </th>
+                    <th scope="col"  class="px-4 py-2">Name</th>
+                    <th scope="col"  class="px-4 py-2">Amount</th>
+                    <th scope="col"  class="px-4 py-2">
+                        <select name="paymethod" id="pymtd" class="bg-slate-900 text-white px-4 py-2">
+                            <option selected>Payment Method</option>
+                            <option value="1">Cash</option>
+                            <option value="2">Gcash</option>
+                            <option value="3">Bank Transfer</option>
+                        </select>
+                    </th>
+                    <th scope="col" class="px-4 py-2">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @for (item of orderList; track $index) {
+                @for (item of orderList; track item.id) {
                     <tr>
-                        <td class="py-2 text-center">{{ item.id }}</td>
+                        <td class="py-2 text-center font-semibold">{{ item.id }}</td>
                         <td>{{ item.product }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.amount | currency: 'PHP' }}</td>
-                        <td>{{ item.payMet }}</td>
+                        @if (item.payMet == "Cash") {
+                            <td class="text-green-600 font-semibold">{{ item.payMet }}</td>
+                        } @else if (item.payMet == "G-Cash") {
+                            <td class="text-blue-600 font-semibold">{{ item.payMet }}</td>
+                        } @else {
+                            <td class="text-amber-600 font-semibold">{{ item.payMet }}</td>
+                        }
                         <td class="flex justify-between px-4">
                             <button type="button">E</button>
                             <button type="button">D</button>

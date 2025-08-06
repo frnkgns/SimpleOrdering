@@ -1,4 +1,5 @@
 <div class="flex justify-center gap-4 text-white">
+    <!-- So you can use product.id of course for  better tracking but since we are using a a just an array not an object array then therefore we can use this $index -->
     @for (product of products; track $index) {
         <button 
             class="bg-slate-900 px-6 py-8 rounded" 

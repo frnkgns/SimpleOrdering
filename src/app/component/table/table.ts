@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component} from '@angular/core';
 import { Orders } from '../../../data/order';
 import { CommonModule } from '@angular/common';
+import { TableRow } from './tableRow';
 
 @Component({
   selector: 'table-app',
-  imports: [CommonModule],
+  imports: [CommonModule, TableRow],
   templateUrl: './table.html',
   styleUrl: '../../app.css'
 })
