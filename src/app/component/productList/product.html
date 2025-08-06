@@ -1,11 +1,14 @@
-<div class="flex justify-center gap-4 text-white">
+<div class="flex justify-center gap-4 text-white mb-20">
     <!-- So you can use product.id of course for  better tracking but since we are using a a just an array not an object array then therefore we can use this $index -->
     @for (product of products; track $index) {
         <button 
-            class="bg-slate-900 px-6 py-8 rounded" 
-            (click)="openOrderForm(product)"
+            class="relative bg-slate-900 py-4 px-4 rounded-xl font-semibold text-slate-900 flex" 
+            (click)="openOrderForm(product.name)"
             type="button">
-            {{product}}
+            <img src="{{product.icons}}" alt="" class="h-12 z-99">
+            <span class="absolute">
+                {{product.name}}
+            </span>
         </button>
     }
 </div>

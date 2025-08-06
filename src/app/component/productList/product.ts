@@ -1,7 +1,6 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Products } from '../../../data/productlist';
 import { SharedService } from '../sharedService';
-
 
 @Component({
   selector: 'app-products',

@@ -2,8 +2,11 @@
 <br>
 <br>
 @if (sharedservice.showTakeOrderModal) {
-    <div class="absolute bg-slate-900 h-screen w-screen opacity-80"></div>
-    <app-takeorder></app-takeorder>
+    <div class="relative flex items-center justify-center">
+        <div class="absolute bg-slate-900 h-screen w-screen opacity-80"></div>
+        <app-takeorder></app-takeorder>
+    </div>
+
 }
 
 <app-products></app-products>
