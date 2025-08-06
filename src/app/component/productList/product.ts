@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Products } from '../../../data/productlist';
-import { TakeOrder } from '../modal/takeOrder';
+import { TakeOrder } from "../modal/takeOrder";
+import { SharedService } from '../sharedService';
 
 
 @Component({
   selector: 'app-products',
   templateUrl: './product.html',
-  imports: [TakeOrder],
-  styleUrl: '../../app.css'
+  styleUrl: '../../app.css',
+  imports: [TakeOrder]
 })
 export class ProductList {
     products = Products
-    showOrderModal = false;
+    constructor(public sharedservice: SharedService) {}
+
+  handleOpenTakeOrderModal() {
+    this.sharedservice.setShowTakeOrderModal(true);
+  }
+
 
 }

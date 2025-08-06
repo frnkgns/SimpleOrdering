@@ -4,3 +4,4 @@ export const Orders = [
     {id: 3, product: "Cola", name: "Frank", amount: 30, payMet: "Bank Transfer"},
     {id: 4, product: "Cola", name: "Frank", amount: 30, payMet: "G-Cash"}
 ]
+
