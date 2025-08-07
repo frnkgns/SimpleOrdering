@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Table } from './component/table/table';
 import { ButtonModule } from 'primeng/button';
 import { ProductList } from './component/productList/product';
-import { SharedService } from './component/sharedService';
 import { TakeOrder } from './component/modal/takeOrder';
+import { SharedService } from './component/sharedService';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +12,7 @@ import { TakeOrder } from './component/modal/takeOrder';
   styleUrl: './app.css'
 })
 export class App {
+  details = "sample";
 
-  constructor(public sharedservice: SharedService) {}
-
-  handleOpenTakeOrderModal() {
-    this.sharedservice.setShowTakeOrderModal(true);
-  }
-
+  constructor(public sharedservice: SharedService){}
 }

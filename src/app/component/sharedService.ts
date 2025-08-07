@@ -1,14 +1,16 @@
 // shared.service.ts
-import { Injectable, Input } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, Output } from '@angular/core';
 import { Orders } from '../../data/order';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class SharedService {
   showTakeOrderModal = false;
   selectedProduct = '';
+  editProductDetails: any;
+  action: any;
 
   saveOrder(product: string, name: string, amount: number, payMet: string) {
     const id = Orders.length + 1;
@@ -17,6 +19,10 @@ export class SharedService {
     console.log("Orders After: ", Orders);
 
     this.setShowTakeOrderModal(false);
+  }
+
+  saveEditOrder(id: number, product: string, name: string, amount: number, payMet: string){
+
   }
 
   deleteOrder(id: number){
@@ -28,8 +34,17 @@ export class SharedService {
   setShowModalWithProduct(value: boolean, product: string) {
     this.showTakeOrderModal = value;
     this.selectedProduct = product;
+    this.action = "new";
 
     console.log("Received From Constructor: ", this.selectedProduct);
+  }
+
+  setShowModalWithEditProduct(value: boolean, details: any){
+    this.showTakeOrderModal = value;
+    this.editProductDetails = details;
+    this.action = "edit";
+
+    console.log("Receive Edit in Shared: ", this.editProductDetails);
   }
 
   setShowTakeOrderModal(value: boolean) {

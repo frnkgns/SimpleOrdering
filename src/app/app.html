@@ -1,13 +1,13 @@
-<br>
-<br>
-<br>
-@if (sharedservice.showTakeOrderModal) {
-    <div class="relative flex items-center justify-center">
-        <div class="absolute bg-slate-900 h-screen w-screen opacity-80"></div>
-        <app-takeorder></app-takeorder>
-    </div>
+<div class="flex flex-col justify-center overflow-hidden">
+    @if (sharedservice.showTakeOrderModal) {
+        <div class="absolute flex flex-col justify-center items-center overflow-hidden z-999">
+            <app-takeorder></app-takeorder>
+        </div>
+    }
 
-}
-
-<app-products></app-products>
-<table-app></table-app>
+    <br>
+    <br>
+    <br>
+    <app-products></app-products>
+    <table-app></table-app>
+</div>

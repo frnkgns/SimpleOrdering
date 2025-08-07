@@ -5,7 +5,7 @@ import { SharedService } from '../sharedService';
 @Component({
   selector: 'app-products',
   templateUrl: './product.html',
-  styleUrl: '../../app.css',
+  styleUrl: '../../app.css'
 })
 export class ProductList {
     products = Products

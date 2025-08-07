@@ -5,7 +5,7 @@
             <thead>
                 <tr class="bg-slate-900 text-white rounded-tl">
                     <th scope="col" class="px-4 py-2">ID</th>
-                    <th scope="col"  class="px-4 py-2">
+                    <th scope="col"  class="py-2">
                         <select (change)="selectedProductFunct($event)" name="selectproduct" id="prdct"  class="bg-slate-900 text-white px-4 py-2">
                             <option selected>Product</option>
                             @for (product of productListOption; track $index) {
@@ -28,21 +28,33 @@
             </thead>
             <tbody>
                 @for (item of filteredList; track item.id) {
-                    <tr>
+                    <tr class="hover:bg-gray-200">
                         <td class="py-2 text-center font-semibold">{{ item.id }}</td>
-                        <td>{{ item.product }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.amount | currency: 'PHP' }}</td>
+                        <td class="text-center">{{ item.product }}</td>
+                        <td class="text-center">{{ item.name }}</td>
+                        <td class="text-center">{{ item.amount | currency: 'PHP' }}</td>
                         @if (item.payMet == "Cash") {
-                            <td class="text-green-600 font-semibold">{{ item.payMet }}</td>
+                            <td class="text-green-600 font-semibold px-10">{{ item.payMet }}</td>
                         } @else if (item.payMet == "G-Cash") {
-                            <td class="text-blue-600 font-semibold">{{ item.payMet }}</td>
+                            <td class="text-blue-600 font-semibold px-10">{{ item.payMet }}</td>
                         } @else {
-                            <td class="text-amber-600 font-semibold">{{ item.payMet }}</td>
+                            <td class="text-amber-600 font-semibold px-10">{{ item.payMet }}</td>
                         }
                         <td class="flex justify-between px-4">
-                            <button type="button">E</button>
-                            <button  type="button">D</button>
+                            <button 
+                                class="px-2 py-2 text-white rounded hover:scale-130 duration-300"
+                                (click)="fetchProductForEdit(item.id, item.product, item.name, item.amount, item.payMet)" type="button">
+                                <span>
+                                    <img src="images/edit.png" alt="editbtn" class="h-5">
+                                </span>
+                            </button>
+                            <button 
+                                class="px-2 py-2 text-white rounded hover:scale-130 duration-300"
+                                (click)="deleteOrder(item.id)" type="button">
+                                <span>
+                                    <img src="images/delete.png" alt="deletebtn" class="h-5">
+                                </span>
+                            </button>
                         </td>
                     </tr>
                 }

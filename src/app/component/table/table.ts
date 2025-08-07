@@ -1,11 +1,11 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { Orders } from '../../../data/order';
 import { CommonModule } from '@angular/common';
-import { TableRow } from './tableRow';
+import { SharedService } from '../sharedService';
 
 @Component({
   selector: 'table-app',
-  imports: [CommonModule, TableRow],
+  imports: [CommonModule],
   templateUrl: './table.html',
   styleUrl: '../../app.css'
 })
@@ -16,16 +16,30 @@ export class Table implements OnInit {
     selectedPayment: string = '';
     selectedProduct: string = '';
     filteredList: any;
+    editProductDetails: any;
 
     productListOption = ['Coffee', 'Soda', 'Bread'];
     payMethodOption = ['Cash', 'G-Cash', 'Bank Transfer'];
+
+    constructor(public sharedservice: SharedService){}
 
     //set a default value of action before doing something or loading somehthiong
     ngOnInit()  {
       console.log(this.orderList);
       this.filteredList = this.orderList
         // this.printSelectedPayMet();
+    }
+    
+    deleteOrder(id: number){
+      Orders.splice(id, 1);
+      console.log("Orders After Delete: ", Orders);
+    }
 
+    fetchProductForEdit(id: number, product: string, name: string, amount: string, paymet: string){
+      this.editProductDetails = {id, product, name, amount, paymet};
+      console.log("Fetching Edit Details: ", this.editProductDetails);
+
+      this.sharedservice.setShowModalWithEditProduct(true, {id, product, name, amount, paymet})
     }
 
     selectedPaymentMethod(event?: any){
