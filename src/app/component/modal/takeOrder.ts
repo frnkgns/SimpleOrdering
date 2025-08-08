@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { SharedService } from '../sharedService';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Orders } from '../../../data/order';
+import { ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-takeorder',
@@ -13,7 +15,7 @@ export class TakeOrder {
   constructor(public sharedservice: SharedService) {}
   editThisProduct = inject(SharedService).editProductDetails;
   action = inject(SharedService).action;
-  selectedProduct = this.editThisProduct ? this.editThisProduct.product : inject(SharedService).selectedProduct;
+  selectedProduct = this.action == "edit" ? this.editThisProduct.product : inject(SharedService).selectedProduct;
 
   // so this is how the initialization of Form
   orderForm = this.action == "edit" ? 
@@ -36,7 +38,6 @@ export class TakeOrder {
     this.action == "new" ? 
     this.savedOrder(this.sharedservice.selectedProduct, formData.name!, formData.amount!, formData.paymet!) :
     this.saveEditOrder(this.editThisProduct.id , this.editThisProduct.product, formData.name!, formData.amount!, formData.paymet!)
-
   }
 
   savedOrder(product: string, name: string, amount:number, paymet: string) {
@@ -47,8 +48,14 @@ export class TakeOrder {
     this.sharedservice.saveEditOrder(id, product, name, amount, paymet);
   }
 
+  deleteOrder(id: number){
+    Orders.splice(id, 1);
+    console.log("Orders After Delete: ", Orders);
+
+    this.handleCloseTakeOrderModal();
+  }
+
   handleCloseTakeOrderModal() {
     this.sharedservice.setShowTakeOrderModal(false);
   }
-  
 }

@@ -29,11 +29,6 @@ export class Table implements OnInit {
       this.filteredList = this.orderList
         // this.printSelectedPayMet();
     }
-    
-    deleteOrder(id: number){
-      Orders.splice(id, 1);
-      console.log("Orders After Delete: ", Orders);
-    }
 
     fetchProductForEdit(id: number, product: string, name: string, amount: string, paymet: string){
       this.editProductDetails = {id, product, name, amount, paymet};

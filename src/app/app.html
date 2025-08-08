@@ -1,13 +1,11 @@
-<div class="flex flex-col justify-center overflow-hidden">
+<div class="flex flex-col overflow-hidden h-screen">
     @if (sharedservice.showTakeOrderModal) {
         <div class="absolute flex flex-col justify-center items-center overflow-hidden z-999">
             <app-takeorder></app-takeorder>
         </div>
     }
 
-    <br>
-    <br>
-    <br>
+    <div class="mt-40"></div>
     <app-products></app-products>
     <table-app></table-app>
 </div>
