@@ -23,12 +23,13 @@
                             }
                         </select>
                     </th>
-                    <th scope="col" class="px-4 py-2">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @for (item of filteredList; track item.id) {
-                    <tr class="hover:bg-gray-200">
+                    <tr 
+                    (click)="fetchProductForEdit(item.id, item.product, item.name, item.amount, item.payMet)"
+                    class="hover:bg-gray-200 hover:cursor-pointer">
                         <td class="py-2 text-center font-semibold">{{ item.id }}</td>
                         <td class="text-center">{{ item.product }}</td>
                         <td class="text-center">{{ item.name }}</td>
@@ -40,22 +41,6 @@
                         } @else {
                             <td class="text-amber-600 font-semibold px-10">{{ item.payMet }}</td>
                         }
-                        <td class="flex justify-between px-4">
-                            <button 
-                                class="px-2 py-2 text-white rounded hover:scale-130 duration-300"
-                                (click)="fetchProductForEdit(item.id, item.product, item.name, item.amount, item.payMet)" type="button">
-                                <span>
-                                    <img src="images/edit.png" alt="editbtn" class="h-5">
-                                </span>
-                            </button>
-                            <button 
-                                class="px-2 py-2 text-white rounded hover:scale-130 duration-300"
-                                (click)="deleteOrder(item.id)" type="button">
-                                <span>
-                                    <img src="images/delete.png" alt="deletebtn" class="h-5">
-                                </span>
-                            </button>
-                        </td>
                     </tr>
                 }
             </tbody>

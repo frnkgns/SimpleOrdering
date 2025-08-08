@@ -22,7 +22,10 @@ export class SharedService {
   }
 
   saveEditOrder(id: number, product: string, name: string, amount: number, payMet: string){
+    Orders[id-1] = {id, product, name, amount, payMet};
+    console.log("Data after Edit", Orders);
 
+    this.showTakeOrderModal = false;
   }
 
   deleteOrder(id: number){

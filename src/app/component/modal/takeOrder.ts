@@ -1,4 +1,4 @@
-import { Component, Inject, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SharedService } from '../sharedService';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +14,6 @@ export class TakeOrder {
   editThisProduct = inject(SharedService).editProductDetails;
   action = inject(SharedService).action;
   selectedProduct = this.editThisProduct ? this.editThisProduct.product : inject(SharedService).selectedProduct;
-
 
   // so this is how the initialization of Form
   orderForm = this.action == "edit" ? 
@@ -36,7 +35,7 @@ export class TakeOrder {
 
     this.action == "new" ? 
     this.savedOrder(this.sharedservice.selectedProduct, formData.name!, formData.amount!, formData.paymet!) :
-    this.saveEditOrder(this.editThisProduct.id , this.sharedservice.selectedProduct, formData.name!, formData.amount!, formData.paymet!)
+    this.saveEditOrder(this.editThisProduct.id , this.editThisProduct.product, formData.name!, formData.amount!, formData.paymet!)
 
   }
 
@@ -47,7 +46,6 @@ export class TakeOrder {
   saveEditOrder(id:number, product: string, name: string, amount:number, paymet: string) {
     this.sharedservice.saveEditOrder(id, product, name, amount, paymet);
   }
-
 
   handleCloseTakeOrderModal() {
     this.sharedservice.setShowTakeOrderModal(false);

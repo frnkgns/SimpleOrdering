@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center w-screen h-screen overflow-hidden">
+<div class="relative flex items-center justify-center w-screen h-screen overflow-hidden">
     <div class="absolute bg-slate-900 h-full w-screen opacity-80"></div>
     <div class="absolute flex items-center px-2 py-2 bg-white rounded-xl z-99">
         <div class="bg-slate-900 rounded-xl py-10">
@@ -27,16 +27,19 @@
                     </div>
 
                     <div class="flex justify-center gap-4 mt-10">
-
                         <button 
-                            class="py-2 px-4 bg-slate-900 hover:bg-green-700 rounded-lg text-white"
-                            type="submit">Proceed
+                            class="py-2 px-4 bg-slate-900 hover:bg-green-700 rounded-lg text-white w-full"
+                            type="submit">
+                            @if(action == "edit"){
+                                Save
+                            } @else {
+                                Proceed
+                            }
                         </button>
-
                         <button 
-                            class="py-2 px-4 bg-slate-900 hover:bg-red-700 rounded-lg text-white"
+                            class="absolute py-2 px-4 hover:text-red-600 hover:scale-105 -mt-36 -mr-50 rounded-lg"
                             (click)="handleCloseTakeOrderModal()"
-                            type="button">Cancel
+                            type="button">X
                         </button>
                     </div>
                 </div>
